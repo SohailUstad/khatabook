@@ -2,7 +2,7 @@
     "name": "Customer Entry App",
     "short_name": "Ustad",
     "description": "Manage customers and entries",
-    "start_url": "/",
+    "start_url": "/khatabook/", 
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#007bff",
