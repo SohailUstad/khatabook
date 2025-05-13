@@ -2,14 +2,17 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('customer-app-cache').then((cache) => {
             return cache.addAll([
-                '/',
-                '/index.html',
-                '/icon-92.png',
-                '/bootstrap.min.css'
+                '/khatabook/',
+                '/khatabook/index.html',
+                '/khatabook/icon-92.png',
+                '/khatabook/bootstrap.min.css'
             ]);
+        }).catch((error) => {
+            console.log('Failed to cache:', error);
         })
     );
 });
+
 
 
 
