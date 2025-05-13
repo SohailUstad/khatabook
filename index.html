@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json"> <!-- Use relative path -->
+
 
     <style>
         body {
@@ -41,7 +42,8 @@
     <div class="fixed-bottom bg-light border-top py-3 d-none" id="entryInputBar">
         <div class="container d-flex gap-2 align-items-center">
             <input type="number" min="1" id="piecesInput" class="form-control" placeholder="Enter pieces">
-            <button class="btn btn-primary" onclick="handleAddEntry()"><span style="font-weight: bolder;">+</span></button>
+            <button class="btn btn-primary" onclick="handleAddEntry()"><span
+                    style="font-weight: bolder;">+</span></button>
         </div>
     </div>
 
@@ -49,7 +51,8 @@
     <div class="fixed-bottom bg-light border-top py-3" id="addCustomerBar">
         <div class="container d-flex gap-2 align-items-center">
             <input type="text" id="customerNameInput" class="form-control" placeholder="Enter customer name">
-            <button class="btn btn-success" onclick="handleAddCustomer()"><span style="font-weight: bolder;">+</span></button>
+            <button class="btn btn-success" onclick="handleAddCustomer()"><span
+                    style="font-weight: bolder;">+</span></button>
         </div>
     </div>
 
@@ -57,7 +60,7 @@
 
 
 
- 
+
 
     <script>
 
@@ -301,7 +304,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
+                navigator.serviceWorker.register('service-worker.js')  // Use relative path
                     .then((registration) => {
                         console.log('Service Worker registered with scope: ', registration.scope);
                     })
@@ -310,8 +313,8 @@
                     });
             });
         }
-
     </script>
+
 
 </body>
 
