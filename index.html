@@ -135,7 +135,15 @@
             const customer = getCustomer(customerName);
             if (!customer) return;
 
-            history.pushState({}, '', `?customer=${encodedName}`);
+            const currentURL = new URL(window.location.href);
+            const currentCustomerParam = currentURL.searchParams.get("customer");
+
+            if (currentCustomerParam !== encodedName) {
+                history.pushState({}, '', `?customer=${encodedName}`);
+            } else {
+                history.replaceState({}, '', `?customer=${encodedName}`);
+            }
+
             document.getElementById("viewTitle").innerText = `📄 Entries for ${customerName}`;
 
             document.getElementById("entryInputBar").classList.remove("d-none");
@@ -149,7 +157,6 @@
                 return;
             }
 
-            // Sort entries by dateAndTime (latest first)
             const sortedEntries = customer.entries.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
             sortedEntries.forEach((entry) => {
@@ -182,6 +189,7 @@
                 container.appendChild(card);
             });
         }
+
 
 
 
