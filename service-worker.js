@@ -1,16 +1,17 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('customer-app-cache').then((cache) => {
-            return cache.add('/')
-                .then(() => cache.add('/index.html'))
-                .then(() => cache.add('/icon-92.png'))
-                .then(() => cache.add('/bootstrap.min.css'))
-                .catch((error) => {
-                    console.log('Failed to cache:', error);
-                });
+            return cache.addAll([
+                '/',
+                '/index.html',
+                '/icon-92.png',
+                '/bootstrap.min.css'
+            ]);
         })
     );
 });
+
+
 
 // Add fetch event listener to serve cached files
 self.addEventListener('fetch', (event) => {
