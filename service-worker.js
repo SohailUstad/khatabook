@@ -1,21 +1,22 @@
-self.addEventListener('install', function (event) {
+// Cache the important files on the first install
+self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('my-cache').then(function (cache) {
+        caches.open('customer-app-cache').then((cache) => {
             return cache.addAll([
                 '/',
                 '/index.html',
-                '/icon-192.png',
-                '/icon-512.png'
-                // Add other files as needed (CSS, JS, etc.)
+                '/icon-92.png',
+                '/bootstrap.min.css'
             ]);
         })
     );
 });
 
-self.addEventListener('fetch', function (event) {
+// Serve cached files when offline
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request).then(function (response) {
-            return response || fetch(event.request);
+        caches.match(event.request).then((cachedResponse) => {
+            return cachedResponse || fetch(event.request);
         })
     );
 });
